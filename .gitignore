@@ -289,3 +289,4 @@ __pycache__/
 
 .DS_Store
 Resource.designer.cs
+*[Ss]ecrets.cs
