@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Windows.Input;
 using MvvmHelpers;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace Badge
@@ -67,7 +68,8 @@ namespace Badge
 		{
 			Device.BeginInvokeOnMainThread(() =>
 			{
-				var data = User.Name;
+				var badgeData = new { name = User.Name, location = User.Location };
+				var data = JsonConvert.SerializeObject(badgeData);
 				Debug.WriteLine($"Sending to data feed: {data}");		
 				Task.Run(async () => await _adafruitApi.SendData(data));
 			});			
